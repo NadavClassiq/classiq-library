@@ -1,0 +1,17 @@
+name: "Trigger Custom Action Manually"
+
+on:
+  workflow_dispatch:  # This allows the workflow to be triggered manually from the GitHub Actions GUI.
+
+jobs:
+  test-notebooks:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run custom notebooks action
+        uses: ./.github/actions/run-tests  # Path to your custom action
+        with:
+          env: "dev"  # Pass the environment (e.g., dev, prod)
+          notebooks: "notebook1.ipynb,notebook2.ipynb"  # Provide a comma-separated list of notebooks
