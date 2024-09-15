@@ -1,7 +1,10 @@
-name: "Trigger Custom Action Manually"
+name: "Trigger Custom Action Manually and on Pull Request"
 
 on:
-  workflow_dispatch:  # This allows the workflow to be triggered manually from the GitHub Actions GUI.
+  workflow_dispatch:  # Allows the workflow to be triggered manually from the GitHub Actions GUI.
+  pull_request:       # Triggers the workflow on pull request events to specific branches.
+    branches:
+      - dev  # You can change this to other branches or include more branches if needed.
 
 jobs:
   test-notebooks:
