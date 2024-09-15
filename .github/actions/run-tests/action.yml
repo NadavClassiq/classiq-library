@@ -1,6 +1,5 @@
 name: "Test Notebooks Action"
 description: "Runs tests on a list of notebooks based on the specified environment."
-author: "Nadav Ben-Ami"
 
 inputs:
   env:
