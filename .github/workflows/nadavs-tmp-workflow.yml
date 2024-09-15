@@ -14,4 +14,4 @@ jobs:
         uses: ./.github/actions/run-tests  # Path to your custom action
         with:
           env: "dev"  # Pass the environment (e.g., dev, prod)
-          notebooks: "notebook1.ipynb,notebook2.ipynb"  # Provide a comma-separated list of notebooks
+          notebooks: "algorithms/bernstein_vazirani/bernstein_vazirani.ipynb"  # Provide a comma-separated list of notebooks
