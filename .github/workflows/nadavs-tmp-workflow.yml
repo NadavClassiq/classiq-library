@@ -1,23 +1,23 @@
-name: "Trigger Custom Action Manually and on Pull Request"
+# .github/workflows/nadavs-tmp-workflow.yml
+name: Test Notebooks
 
 on:
-  workflow_dispatch:  # Allows the workflow to be triggered manually from the GitHub Actions GUI.
-  push:               # Triggers the workflow on push events to specific branches.
+  push:
     branches:
-      - Nadav/CAD-22790/refactor_run_tests  # Trigger on push to this branch.
-  pull_request:       # Triggers the workflow on pull request events to specific branches.
-    branches:
-      - Nadav/CAD-22790/refactor_run_tests  # Trigger on PR to this branch.
+      - Nadav/CAD-22790/refactor_run_tests
 
 jobs:
-  test-notebooks:
+  test:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Run custom notebooks action
-        uses: ./.github/actions/run-tests  # Path to your custom action
+      - name: Run notebook tests
+        uses: ./.github/actions/run-tests  # Calls your composite action
         with:
-          env: "prod"  # Pass the environment (e.g., dev, prod)
-          notebooks: "algorithms/bernstein_vazirani/bernstein_vazirani.ipynb,algorithms/deutsch_jozsa/deutsch_jozsa.ipynb,algorithms/grover/3_sat_grover/3_sat_grover.ipynb"  # Provide a comma-separated list of notebooks
+          env: dev  # Example environment
+          notebooks: notebook1.ipynb,notebook2.ipynb  # List of notebooks to be tested
+        env:
+          PROD_M2M_SECRET_ARN: ${{ secrets.PROD_M2M_SECRET_ARN }}  # Passing secrets
+          NIGHTLY_M2M_SECRET_​⬤

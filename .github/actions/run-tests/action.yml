@@ -1,3 +1,4 @@
+# .github/actions/run-tests/action.yml
 name: "Test Notebooks Action"
 description: "Runs tests on a list of notebooks based on the specified environment."
 
@@ -51,8 +52,8 @@ runs:
     - name: Set authentication
       run: .github/scripts/get_m2m_token.sh
       env:
-        PROD_M2M_SECRET_ARN: "${{ secrets.PROD_M2M_SECRET_ARN }}"
-        NIGHTLY_M2M_SECRET_ARN: "${{ secrets.NIGHTLY_M2M_SECRET_ARN }}"
+        PROD_M2M_SECRET_ARN: "${{ env.PROD_M2M_SECRET_ARN }}"  # Using environment variable for secret
+        NIGHTLY_M2M_SECRET_ARN: "${{ env.NIGHTLY_M2M_SECRET_ARN }}"  # Using environment variable for secret
       shell: bash
 
     - name: Install dependencies
