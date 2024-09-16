@@ -2,9 +2,12 @@ name: "Trigger Custom Action Manually and on Pull Request"
 
 on:
   workflow_dispatch:  # Allows the workflow to be triggered manually from the GitHub Actions GUI.
+  push:               # Triggers the workflow on push events to specific branches.
+    branches:
+      - Nadav/CAD-22790/refactor_run_tests  # Trigger on push to this branch.
   pull_request:       # Triggers the workflow on pull request events to specific branches.
     branches:
-      - dev  # You can change this to other branches or include more branches if needed.
+      - Nadav/CAD-22790/refactor_run_tests  # Trigger on PR to this branch.
 
 jobs:
   test-notebooks:
